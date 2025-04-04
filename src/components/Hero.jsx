@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiMail, FiDownload } from 'react-icons/fi';
 import profilePic from '../assets/profile.png';
+import resumePDF from '../assets/Hitarth Panchal Resume.pdf';
 
 const Hero = () => {
   return (
@@ -59,7 +60,7 @@ const Hero = () => {
                 </motion.a>
                 
                 <motion.a
-                  href="/src/assets/Hitarth Panchal Resume.pdf"
+                  href={resumePDF}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-neutral-800 rounded-full hover:bg-neutral-700 transition-colors"

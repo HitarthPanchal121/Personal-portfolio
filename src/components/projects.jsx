@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiX, FiLayers, FiServer, FiDatabase, FiCode, FiMonitor } from 'react-icons/fi';
+import mingleSpaceImg from '../assets/mingle space.png';
+import imageImg from '../assets/image.png';
+import images2Img from '../assets/images2.jpg';
+import hotelManagementImg from '../assets/Hotel-Management-System.png';
 
 const projects = [
   {
     title: 'MingleSpace',
     description: 'A modern social networking platform designed for meaningful connections and seamless collaboration.',
     technologies: ['React', 'Spring Boot', 'MySQL', 'MUI', 'WebSocket'],
-    image: 'src/assets/mingle space.png',
+    image: mingleSpaceImg,
     category: 'Full Stack',
     details: [
       'Real-Time Communication Features',
@@ -23,7 +27,7 @@ const projects = [
     title: 'BoilerPlate',
     description: 'Advanced Spring Security 6 implementation with multi-layered security architecture.',
     technologies: ['Spring Boot 3', 'Spring Security 6', 'JWT', 'MySQL'],
-    image: 'src/assets/image.png',
+    image: imageImg,
     category: 'Backend',
     details: [
       'Three-layered security with JWT, Custom Session ID, and Refresh Tokens',
@@ -42,7 +46,7 @@ const projects = [
     title: 'Dream Shop',
     description: 'A comprehensive microservices-based e-commerce platform with advanced features.',
     technologies: ['Spring Boot', 'Microservices', 'MySQL', 'Redis', 'RabbitMQ'],
-    image: 'src/assets/images2.jpg',
+    image: images2Img,
     category: 'Microservices',
     details: [
       'Microservices architecture with service discovery',
@@ -62,7 +66,7 @@ const projects = [
     title: 'Hotel Management System',
     description: 'Comprehensive software platform for efficient hotel operations management.',
     technologies: ['Java', 'Spring Boot', 'MySQL', 'React'],
-    image: 'src/assets/Hotel-Management-System.png',
+    image: hotelManagementImg,
     category: 'Full Stack',
     details: [
       'User authentication and role management',
