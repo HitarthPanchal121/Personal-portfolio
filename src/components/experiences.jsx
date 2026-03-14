@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 // Work Experience Data
@@ -7,7 +7,7 @@ const experiences = [
     title: 'Java Developer Intern',
     company: 'Dotsquares Jaipur',
     duration: 'January 2025 - June 2025',
-    technologies: 'Spring, Spring Boot, Microservices, MongoDB, SQL, Swing, JSP, Servlets, Spring Security',
+    location: 'Jaipur, India',
     details: [
       'Developed and maintained backend services using Spring Boot and Microservices.',
       'Worked with MongoDB and SQL for database management.',
@@ -19,89 +19,62 @@ const experiences = [
 ];
 
 const Experience = () => {
-  const [openDropdown, setOpenDropdown] = useState(null);
-
-  const toggleDropdown = (index) => {
-    setOpenDropdown(openDropdown === index ? null : index);
-  };
-
   return (
     <motion.div
       className="border-b border-neutral-900 pb-16"
       initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
     >
-      <motion.div
-        className="flex flex-col items-center text-center lg:items-start lg:text-left"
+      <motion.h2 
+        className="text-6xl font-thin tracking-tight lg:mt-16 lg:text-6xl mb-12"
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, staggerChildren: 0.2 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: true }}
       >
-        <motion.h2 className="pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-6xl">
-          <span className="text-transparent bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text">
-            Work Experience
-          </span>
-        </motion.h2>
+        Work Experience
+      </motion.h2>
+      <motion.p 
+        className="text-lg text-neutral-400 mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        viewport={{ once: true }}
+      >
+        A track record of driving innovation and results through software.
+      </motion.p>
 
-        {/* Experience List */}
-        <motion.div className="my-12">
-          {experiences.map((experience, index) => (
-            <motion.div
-              key={index}
-              className="flex flex-col lg:flex-row mb-8 text-neutral-300"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-            >
-              {/* Left Section: Text Content */}
-              <div className="flex-1 mb-4 lg:mb-0 lg:mr-4">
-                <h3 className="text-4xl font-semibold text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text mb-2">
-                  {experience.title}
-                </h3>
-                <p className="text-lg font-light text-neutral-400">
-                  {experience.company} ({experience.duration})
-                </p>
-                <p className="text-lg font-light mt-2">
-                  <strong>Technologies:</strong> {experience.technologies}
-                </p>
-                <button
-                  onClick={() => toggleDropdown(index)}
-                  className="mt-2 text-lg text-blue-500 underline hover:text-blue-700"
-                >
-                  Read More
-                </button>
-                {openDropdown === index && (
-                  <motion.div
-                    className="mt-2 p-4 rounded-lg"
-                    style={{ background: 'rgba(255, 255, 255, 0.1)' }}
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <ul className="list-disc pl-5 text-neutral-300">
-                      {experience.details.map((detail, i) => (
-                        <li key={i}>{detail}</li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                )}
-              </div>
-
-              {/* Right Section: Logo Image */}
-              <div className="hidden lg:block ml-auto">
-                <img
-                  src="src\assets\download.jpg" // Replace with the actual path to your logo
-                  alt={experience.company}
-                  className="w-32 h-32" // Larger size for the logo
-                />
-              </div>
-            </motion.div>
-          ))}
+      {/* Experience List */}
+      {experiences.map((experience, index) => (
+        <motion.div
+          key={index}
+          className="impressive-card p-6 rounded-lg mb-12"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.2 + 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-4xl font-semibold mb-2 impressive-gradient">{experience.company}</h3>
+          <p className="text-xl font-light mb-4">{experience.title}</p>
+          <p className="text-lg text-neutral-400 mb-4">{experience.duration} • {experience.location}</p>
+          <h4 className="text-2xl font-semibold mb-4">Key Contributions</h4>
+          <ul className="list-disc pl-5 space-y-2">
+            {experience.details.map((detail, i) => (
+              <motion.li
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                {detail}
+              </motion.li>
+            ))}
+          </ul>
         </motion.div>
-      </motion.div>
+      ))}
     </motion.div>
   );
 };
